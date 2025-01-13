@@ -1,0 +1,23 @@
+.bg-gradient-radial {
+  background-image: radial-gradient(circle, rgba(0,22,116,1) 0%, rgba(0,0,0,1) 100%);
+}
+
+.bg-selected-box{
+  background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 5%, rgba(35,255,245,1) 96%);
+}
+
+.bg-new{
+
+  background: linear-gradient(45deg,  #4c4c4c 0%,#595959 12%,#666666 25%,#474747 39%,#2c2c2c 50%,#000000 51%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%);
+}
+
+.bg-new2{
+
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#959595+0,0a0a0a+0,010101+34,4e4e4e+48,0d0d0d+58,0d0d0d+100,4e4e4e+100,383838+100,1b1b1b+100,4e4e4e+100 */
+background: linear-gradient(45deg,  #959595 0%,#0a0a0a 0%,#010101 34%,#4e4e4e 48%,#0d0d0d 58%,#0d0d0d 100%,#4e4e4e 100%,#383838 100%,#1b1b1b 100%,#4e4e4e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+
+
+}
+  

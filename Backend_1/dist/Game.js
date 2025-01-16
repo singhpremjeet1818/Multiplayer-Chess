@@ -26,6 +26,41 @@ class Game {
             moves: this.board.fen()
         }));
     }
+    gameOver(socket, winner) {
+        console.log(winner);
+        if (socket === this.player1 && socket !== this.player2) {
+            this.player1.send(JSON.stringify({
+                type: messages_1.GAME_OVER,
+                payload: {
+                    type: 'Time out',
+                    winStatus: winner
+                }
+            }));
+            this.player2.send(JSON.stringify({
+                type: messages_1.GAME_OVER,
+                payload: {
+                    type: 'Time out',
+                    winStatus: winner
+                }
+            }));
+        }
+        else if (socket !== this.player1 && socket === this.player2) {
+            this.player1.send(JSON.stringify({
+                type: messages_1.GAME_OVER,
+                payload: {
+                    type: 'Time out',
+                    winStatus: 'winner'
+                }
+            }));
+            this.player2.send(JSON.stringify({
+                type: messages_1.GAME_OVER,
+                payload: {
+                    type: 'Time out',
+                    winStatus: 'lost'
+                }
+            }));
+        }
+    }
     makeMove(socket, move) {
         if (this.moveCount % 2 === 0 && socket !== this.player1) {
             console.log("Wrong turn");

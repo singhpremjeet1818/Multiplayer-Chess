@@ -5,7 +5,7 @@ import Button from './Button';
 const Landing = () => {
     const navigate = useNavigate();
   return (
-    <div className='h-screen bg-black'>
+    <div className='h-screen bg-land'>
         <div className='h-screen flex justify-around items-center'>
             <img className='w-5/12' src={chessBoard} alt="" />
             <div className='h-screen flex flex-col content-around items-center justify-center gap-y-56'>

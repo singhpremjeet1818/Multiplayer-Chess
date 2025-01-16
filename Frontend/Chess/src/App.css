@@ -20,4 +20,182 @@ background: linear-gradient(45deg,  #959595 0%,#0a0a0a 0%,#010101 34%,#4e4e4e 48
 
 
 }
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(0px); }
+  60% { transform: translateX(3px); }
+  80% { transform: translateX(0px); }
+  100% { transform: translateX(-3px); }
+}
+.shake {
+  animation: shake 0.5s ease-in-out infinite;
+}
+@keyframes wrongMove {
+  0%, 100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(141, 5, 5, 0.825);
+  }
+}
+
+.blink {
+  animation: wrongMove 0.5s cubic-bezier(.36,.07,.19,.97) infinite;
+}
+@keyframes jerkyShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px) rotate(-5deg); }
+  40% { transform: translateX(5px) rotate(5deg); }
+  60% { transform: translateX(-3px) rotate(-3deg); }
+  80% { transform: translateX(3px) rotate(3deg); }
+}
+
+.shake {
+  animation: jerkyShake 0.5s cubic-bezier(.36,.07,.19,.97) infinite;
+}
+.board {
+  position: relative;
+  transition: transform 1s ease-in-out;  /* Smooth rotation */
+  transform-origin: center center;        /* Ensure rotation is around the center */
+}
+
+.rotate-board {
+  transform: rotate(540deg);  /* Rotate the board by 180 degrees */
+}
+
+.wooden-border {
+  --border-size: 20px;
+  border: var(--border-size) solid;
+  border-image: url("/src/assets/wood.jpg") 30 stretch;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.wooden-border-highlight {
+  --border-size: 20px;
+  border: var(--border-size) solid;
+  border-image: url("/wood-texture-highlight.jpg") 30 stretch;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+.wooden-texture-example {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #7a4b3b, #a15e3d, #8b5a43, #7a4b3b);
+  background-size: 400% 400%;
+  animation: woodAnimation 10s ease infinite;
+}
+
+.bg-game{
+  background-image: url('/src/assets/chess-back.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+.bg-land{
+  background-image: url('/src/assets/chess2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.6s ease-in-out;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Modal Title */
+.modal-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #F5DEB3;
+  margin-bottom: 20px;
+  animation: bounceIn 1s ease;
+}
+
+/* Winner Message */
+.winner-message {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #efefef;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Button Styling */
+.close-button {
+  background-color: #F5DEB3;
+  color: black;
+  font-size: 1.1em;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.close-button:hover {
+  background-color: #fbc560;
+}
+
+.close-button:focus {
+  outline: none;
+}
+
+/* Animation Definitions */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
   

@@ -1,5 +1,5 @@
 import { WebSocket } from "ws";
-import { INIT_GAME, MOVE } from "./messages";
+import { GAME_OVER, INIT_GAME, MOVE } from "./messages";
 import { Game } from "./Game";
 
 export class GameManager{
@@ -40,11 +40,18 @@ export class GameManager{
                 }
             }
 
+            const game = this.games.find(game => game.player1 ===socket || game.player2 === socket);
             if(message.type===MOVE){
-                const game = this.games.find(game => game.player1 ===socket || game.player2 === socket);
                 if(game){
                     game.makeMove(socket, message.payload.move)
                 }
+            }
+            if(message.type===GAME_OVER){
+                // const game = this.games.find(game => game.player1 ===socket || game.player2 === socket);
+                console.log(message.payload.winner)
+                if(game)
+                game.gameOver(socket,message.payload.winner);
+                
             }
         })
 

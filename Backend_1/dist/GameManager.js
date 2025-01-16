@@ -31,11 +31,17 @@ class GameManager {
                     this.pendingUser = socket;
                 }
             }
+            const game = this.games.find(game => game.player1 === socket || game.player2 === socket);
             if (message.type === messages_1.MOVE) {
-                const game = this.games.find(game => game.player1 === socket || game.player2 === socket);
                 if (game) {
                     game.makeMove(socket, message.payload.move);
                 }
+            }
+            if (message.type === messages_1.GAME_OVER) {
+                // const game = this.games.find(game => game.player1 ===socket || game.player2 === socket);
+                console.log(message.payload.winner);
+                if (game)
+                    game.gameOver(socket, message.payload.winner);
             }
         });
     }

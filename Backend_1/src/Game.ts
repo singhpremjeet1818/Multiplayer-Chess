@@ -32,7 +32,41 @@ export class Game{
         }))
     }
 
-
+    gameOver(socket:WebSocket,winner:string){
+        console.log(winner)
+        if(socket===this.player1 && socket!==this.player2){
+            this.player1.send(JSON.stringify({
+                type:GAME_OVER,
+                payload:{
+                    type:'Time out',
+                    winStatus:winner
+                }
+            }))
+            this.player2.send(JSON.stringify({
+                type:GAME_OVER,
+                payload:{
+                    type:'Time out',
+                    winStatus:winner
+                }
+            }))
+        }
+        else if(socket!==this.player1 && socket===this.player2){
+            this.player1.send(JSON.stringify({
+                type:GAME_OVER,
+                payload:{
+                    type:'Time out',
+                    winStatus:'winner'
+                }
+            }))
+            this.player2.send(JSON.stringify({
+                type:GAME_OVER,
+                payload:{
+                    type:'Time out',
+                    winStatus:'lost'
+                }
+            }))
+        }
+    }
     makeMove(socket: WebSocket, move: {
         from:string;
         to:string;

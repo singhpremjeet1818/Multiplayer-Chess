@@ -10,7 +10,9 @@ export const MOVE = "move";
 export const GAME_OVER = "game-over";
 import move from '../../src/assets/sound-effects/Move.mp3'
 import GameStart from '../../src/assets/sound-effects/GameStart.mp3'
+import buttonpress from '../../src/assets/sound-effects/buttonpress.mp3'
 import WinnerModal from "./WinnerModal";
+import SelectPromotion from "./SelectPromotion";
 
 const Game = () => {
     const socket = useSocket();
@@ -18,9 +20,11 @@ const Game = () => {
     const [board, setBoard]  = useState(chess.board());
     const moveAudio = useRef<HTMLAudioElement>();
     const startAudio = useRef<HTMLAudioElement>();
+    const buttonAudio = useRef<HTMLAudioElement>();
     const [isgameStarted,setIsGameStarted] = useState(false);
     const [winStatus,setWinStatus] = useState<string>('');
     const [isOver,setIsOver] = useState(false);
+    
     const handleCloseModal = () => {
         setIsOver(false);  // Reset game state or restart the game logic
         setWinStatus('');
@@ -29,6 +33,7 @@ const Game = () => {
         
         moveAudio.current =new Audio(move);
         startAudio.current =new Audio(GameStart);
+        buttonAudio.current = new Audio(buttonpress)
       },[])
     console.log("Hello",chess.board())
     useEffect(()=>{
@@ -95,14 +100,17 @@ const Game = () => {
                     <ChessBoard setBoard={setBoard} chess={chess} board={board} socket={socket} moveAudio={moveAudio.current} isStarted={isgameStarted}/>
                 </div>
                 <div className="">
-                    <Button onClick={()=>
+                    <Button onClick={()=>{
+                     buttonAudio.current?.play();
                         socket.send(JSON.stringify({
                             type: INIT_GAME
 
-                        }))
+                        }))}
                     }>Play</Button>
                     
                 </div>
+
+                
 
             </div>
         </div>

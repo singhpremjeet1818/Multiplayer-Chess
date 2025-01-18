@@ -1,11 +1,13 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
+  "compilerOptions": {
+    "baseUrl": "./src",        // Set the base directory for imports (relative to src)
+    "paths": {
+      "@/*": ["./*"]           // Define the alias for the @ symbol
     },
-    {
-      "path": "./tsconfig.node.json"
-    }
+    "types": ["node"],         // Include node types for core modules like 'path'
+    "jsx": "react-jsx"         // Enable JSX transformation (for React)
+  },
+  "include": [
+    "src/**/*"
   ]
 }

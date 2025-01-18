@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/revamped');
+
 .bg-gradient-radial {
   background-image: radial-gradient(circle, rgba(0,22,116,1) 0%, rgba(0,0,0,1) 100%);
 }
@@ -198,4 +200,40 @@ background: linear-gradient(45deg,  #959595 0%,#0a0a0a 0%,#010101 34%,#4e4e4e 48
   }
 }
 
-  
+.container::after {
+  content: "";
+  display: absolute;
+  background-image: url('/src/assets/Border.png');
+  background-size: cover; /* or 'contain' depending on how you want to size the image */
+  background-position: center; /* adjust based on the image */
+  width: 70px; /* or any specific width */
+  height: 70px; /* set the height */
+  z-index: 999999;
+}
+.parallelogram {
+  width: 100px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: skew(40deg);
+  /* margin: 50px; */
+}
+.content {
+ 
+  font-size: 16px;
+  color: white;
+  animation: slideInFromLeft 0.5s ease-out forwards;
+  font-family: 'Revamped', sans-serif;
+}
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%) skew(-40deg); /* Start off-screen to the left */
+  }
+  50% {
+    transform: translateX(10%) skew(-40deg); /* Midway through, a little to the right */
+  }
+  100% {
+    transform: translateX(0) skew(-40deg); /* End in the normal position */
+  }
+}
